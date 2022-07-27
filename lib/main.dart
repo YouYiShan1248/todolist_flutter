@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:todolist_flutter/models/task_data.dart';
+import 'package:todolist_flutter/views/loading_page.dart';
 import 'package:todolist_flutter/views/tasks_page.dart';
 
 void main() {
@@ -15,7 +16,7 @@ class MyApp extends StatelessWidget {
     return ChangeNotifierProvider(
       create: (BuildContext context)=>TaskData(),
       child: MaterialApp(
-        home: TasksPage(),
+        home: LoadingPage(),
       ),
     );
   }

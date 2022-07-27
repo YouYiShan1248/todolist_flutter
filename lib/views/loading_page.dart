@@ -13,11 +13,14 @@ class _LoadingPageState extends State<LoadingPage> {
   getLocation() async {
     var weatherData = await WeatherModel().getLocationWeather();
 
+
     Navigator.push(
       context,
       MaterialPageRoute(
         builder: (context) {
-          return TasksPage(locationWeather: weatherData,);
+          return TasksPage(
+            locationWeather: weatherData,
+          );
         },
       ),
     );
@@ -32,6 +35,10 @@ class _LoadingPageState extends State<LoadingPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Scaffold(
+      body: Center(
+        child: Text('loading....'),
+      ),
+    );
   }
 }
