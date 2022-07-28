@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import 'package:todolist_flutter/controller/weather_data.dart';
+import 'package:todolist_flutter/models/weather_model.dart';
 import '../widgets/tasks_list.dart';
 
 class TasksPage extends StatelessWidget {
   final locationWeather;
-
   TasksPage({Key? key, this.locationWeather}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    WeatherModel weatherModel = WeatherModel();
+
     return Scaffold(
       backgroundColor: Colors.lightBlueAccent,
       body: Column(
@@ -22,14 +22,16 @@ class TasksPage extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  '${Provider.of<Weather>(context).updateTemperature(locationWeather)}',
+                  '${locationWeather['main']['temp']}℃',
+                  // '${Provider.of<Weather>(context).updateTemperature(locationWeather)}',
                   style: TextStyle(
                       color: Colors.white,
                       fontSize: 50.0,
                       fontWeight: FontWeight.w700),
                 ),
                 Text(
-                  Provider.of<Weather>(context).updateMessage(locationWeather),
+                  weatherModel.getMessage(locationWeather['weather'][0]['id']),
+                  // Provider.of<Weather>(context).updateMessage(locationWeather),
                   style: TextStyle(
                       color: Colors.white,
                       fontSize: 25.0,

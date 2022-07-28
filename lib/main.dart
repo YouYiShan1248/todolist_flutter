@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:todolist_flutter/controller/weather_data.dart';
 import 'package:todolist_flutter/controller/task_data.dart';
 import 'package:todolist_flutter/views/loading_page.dart';
 
@@ -16,7 +15,6 @@ class MyApp extends StatelessWidget {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (BuildContext context) => TaskData()),
-        ChangeNotifierProvider(create: (BuildContext context) => Weather()),
       ],
       child: MaterialApp(
         home: LoadingPage(),
