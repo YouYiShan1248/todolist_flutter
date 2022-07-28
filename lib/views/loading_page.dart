@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:todolist_flutter/views/tasks_page.dart';
-import 'package:todolist_flutter/models/weather_data.dart';
+import 'package:todolist_flutter/models/weather_model.dart';
 
 class LoadingPage extends StatefulWidget {
   const LoadingPage({Key? key}) : super(key: key);
@@ -12,7 +12,6 @@ class LoadingPage extends StatefulWidget {
 class _LoadingPageState extends State<LoadingPage> {
   getLocation() async {
     var weatherData = await WeatherModel().getLocationWeather();
-
 
     Navigator.push(
       context,

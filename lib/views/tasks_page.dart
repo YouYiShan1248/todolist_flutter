@@ -1,46 +1,12 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
-import 'package:todolist_flutter/models/weather_data.dart';
+import 'package:provider/provider.dart';
+import 'package:todolist_flutter/controller/weather_data.dart';
 import '../widgets/tasks_list.dart';
 
-class TasksPage extends StatefulWidget {
+class TasksPage extends StatelessWidget {
   final locationWeather;
 
-  const TasksPage({Key? key, this.locationWeather}) : super(key: key);
-
-  @override
-  State<TasksPage> createState() => _TasksPageState();
-}
-
-class _TasksPageState extends State<TasksPage> {
-  WeatherModel weatherModel = WeatherModel();
-  late int condition;
-  late int temperature;
-  var message;
-
-  @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-    updateUI(widget.locationWeather);
-  }
-
-  void updateUI(dynamic weatherData){
-    setState(() {
-      if(weatherData == null){
-        message = 'no data';
-        temperature =0;
-        return;
-      }else{
-        double temp = weatherData['main']['temp'];
-        temperature = temp.toInt();
-        condition = weatherData['weather'][0]['id'];
-        message =weatherModel.getMessage(condition);
-      }
-
-    });
-  }
+  TasksPage({Key? key, this.locationWeather}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -56,14 +22,14 @@ class _TasksPageState extends State<TasksPage> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  '$temperature ℃',
+                  '${Provider.of<Weather>(context).updateTemperature(locationWeather)}',
                   style: TextStyle(
                       color: Colors.white,
                       fontSize: 50.0,
                       fontWeight: FontWeight.w700),
                 ),
                 Text(
-                  message,
+                  Provider.of<Weather>(context).updateMessage(locationWeather),
                   style: TextStyle(
                       color: Colors.white,
                       fontSize: 25.0,

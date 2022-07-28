@@ -9,10 +9,6 @@ class Location{
       Position? position = await Geolocator.getLastKnownPosition(forceAndroidLocationManager: true);
       latitude = position?.latitude;
       longitude = position?.longitude;
-      print('--------------------------');
-      print(latitude);
-      print(longitude);
-      print('--------------------------');
     }catch(e){
       print(e);
     }
