@@ -1,9 +1,30 @@
 import 'package:flutter/material.dart';
-class TasksList extends StatelessWidget {
-  const TasksList({Key? key}) : super(key: key);
+import 'package:provider/provider.dart';
+import 'package:todolist_flutter/models/task_data.dart';
+import 'package:todolist_flutter/widgets/tasks_tile.dart';
 
+class TasksList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Consumer<TaskData>(
+      builder: (context, taskData, child) {
+        return ListView.builder(
+          itemCount: Provider.of<TaskData>(context).tasks.length,
+          itemBuilder: (context, index) {
+            final task = taskData.tasks[index];
+            return TaskTile(
+              isChecked: task.isDone,
+              taskTitle: task.name,
+              checkboxCallback: (bool? checkboxState){
+                taskData.updateTask(task);
+              },
+              longPressCallback: (){
+                taskData.deleteTask(task);
+              },
+            );
+          },
+        );
+      },
+    );
   }
 }

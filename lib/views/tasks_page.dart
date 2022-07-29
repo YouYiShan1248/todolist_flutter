@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:todolist_flutter/models/weather_model.dart';
+import 'package:todolist_flutter/views/add_task_page.dart';
 import '../widgets/tasks_list.dart';
 
 class TasksPage extends StatelessWidget {
@@ -12,6 +13,16 @@ class TasksPage extends StatelessWidget {
 
     return Scaffold(
       backgroundColor: Colors.lightBlueAccent,
+      floatingActionButton: FloatingActionButton(
+        backgroundColor: Colors.lightBlueAccent,
+        onPressed: () {
+          showModalBottomSheet(
+            context: context,
+            builder: (context) => AddTaskPage(),
+          );
+        },
+        child: const Icon(Icons.add),
+      ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
