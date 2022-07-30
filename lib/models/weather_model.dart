@@ -19,13 +19,4 @@ class WeatherModel {
     return weatherData;
   }
 
-  String getMessage(int condition) {
-    if (condition < 600) {
-      return '出门记得带伞';
-    }else if (condition == 800) {
-      return '晴朗的一天！';
-    } else {
-      return '记录美好生活';
-    }
-  }
 }

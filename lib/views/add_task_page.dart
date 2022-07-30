@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:todolist_flutter/models/task_data.dart';
+import '../generated/l10n.dart';
 
 String? taskTitle;
 
@@ -21,8 +22,8 @@ class AddTaskPage extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            const Text(
-              'Add Task',
+            Text(
+              S.of(context).AddTask,
               textAlign: TextAlign.center,
               style: TextStyle(color: Colors.lightBlueAccent, fontSize: 30.0),
             ),
@@ -49,10 +50,10 @@ class AddTaskPage extends StatelessWidget {
               color: Colors.lightBlueAccent,
               onPressed: () {
                 Provider.of<TaskData>(context, listen: false)
-                    .addTask(taskTitle ?? 'null');
+                    .addTask(taskTitle!);
               },
-              child: const Text(
-                'Add',
+              child: Text(
+                S.of(context).Add,
                 style: TextStyle(color: Colors.white),
               ),
             ),

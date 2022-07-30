@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:todolist_flutter/models/weather_model.dart';
+import 'package:provider/provider.dart';
+import 'package:todolist_flutter/models/task_data.dart';
 import 'package:todolist_flutter/views/add_task_page.dart';
+import '../generated/l10n.dart';
 import '../widgets/tasks_list.dart';
 
 class TasksPage extends StatelessWidget {
@@ -9,7 +11,6 @@ class TasksPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    WeatherModel weatherModel = WeatherModel();
 
     return Scaffold(
       backgroundColor: Colors.lightBlueAccent,
@@ -34,22 +35,20 @@ class TasksPage extends StatelessWidget {
               children: [
                 Text(
                   '${locationWeather['main']['temp']}℃',
-                  // '${Provider.of<Weather>(context).updateTemperature(locationWeather)}',
                   style: TextStyle(
                       color: Colors.white,
                       fontSize: 50.0,
                       fontWeight: FontWeight.w700),
                 ),
                 Text(
-                  weatherModel.getMessage(locationWeather['weather'][0]['id']),
-                  // Provider.of<Weather>(context).updateMessage(locationWeather),
+                  S.of(context).TabTitle,
                   style: TextStyle(
                       color: Colors.white,
                       fontSize: 25.0,
                       fontWeight: FontWeight.w300),
                 ),
                 Text(
-                  'data',
+                  '${Provider.of<TaskData>(context).taskCount} 条事项',
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 20.0,
