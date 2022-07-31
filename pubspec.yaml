@@ -36,7 +36,6 @@ dependencies:
   intl: ^0.17.0                   #国际化
   flutter_localizations:          #国际化
     sdk: flutter
-  shared_preferences: ^2.0.15     #数据持久化
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
