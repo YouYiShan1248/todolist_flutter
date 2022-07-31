@@ -20,7 +20,7 @@ class _LoadingPageState extends State<LoadingPage> {
         locationWeather: weatherData,
       );
     }), (route) => false);
-
+    
 
 
 

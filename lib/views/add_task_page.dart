@@ -51,6 +51,7 @@ class AddTaskPage extends StatelessWidget {
               onPressed: () {
                 Provider.of<TaskData>(context, listen: false)
                     .addTask(taskTitle!);
+                Navigator.pop(context);
               },
               child: Text(
                 S.of(context).Add,
