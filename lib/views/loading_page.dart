@@ -6,6 +6,8 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 class LoadingPage extends StatefulWidget {
   const LoadingPage({Key? key}) : super(key: key);
 
+  static String id = '/LoadingPage';
+
   @override
   State<LoadingPage> createState() => _LoadingPageState();
 }
@@ -14,15 +16,14 @@ class _LoadingPageState extends State<LoadingPage> {
   getLocation() async {
     var weatherData = await WeatherModel().getLocationWeather();
 
+    // Navigator.pushNamedAndRemoveUntil(context,TasksPage.id, (route) => false);
+
     Navigator.pushAndRemoveUntil(context,
         MaterialPageRoute(builder: (BuildContext context) {
       return TasksPage(
         locationWeather: weatherData,
       );
     }), (route) => false);
-    
-
-
 
   }
 

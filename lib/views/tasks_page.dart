@@ -9,6 +9,8 @@ class TasksPage extends StatelessWidget {
   final locationWeather;
   TasksPage({Key? key, this.locationWeather}) : super(key: key);
 
+  static String id = '/TasksPage';
+
   @override
   Widget build(BuildContext context) {
 

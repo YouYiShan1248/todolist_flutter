@@ -6,6 +6,9 @@ import '../generated/l10n.dart';
 String? taskTitle;
 
 class AddTaskPage extends StatelessWidget {
+
+  static String id = '/AddTasksPage';
+
   @override
   Widget build(BuildContext context) {
     return Container(
