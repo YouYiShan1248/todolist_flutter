@@ -1,5 +1,6 @@
 {
     "AddTask":"AddTask",
     "Add":"Add",
-    "TabTitle":"Record every day of life with heart"
+    "TabTitle":"Record every day of life with heart",
+    "tasks":"tasks"
 }

@@ -79,6 +79,16 @@ class S {
       args: [],
     );
   }
+
+  /// `tasks`
+  String get tasks {
+    return Intl.message(
+      'tasks',
+      name: 'tasks',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

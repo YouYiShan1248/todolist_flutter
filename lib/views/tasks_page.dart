@@ -64,7 +64,7 @@ class TasksPage extends StatelessWidget {
                       fontWeight: FontWeight.w300),
                 ),
                 Text(
-                  '${Provider.of<TaskData>(context).taskCount} 条事项',
+                  '${Provider.of<TaskData>(context).taskCount} ${S.of(context).tasks}',
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 20.0,

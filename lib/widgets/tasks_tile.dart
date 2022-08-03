@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:todolist_flutter/models/theme_data.dart';
 
 class TaskTile extends StatelessWidget {
   bool isChecked = false;
@@ -23,7 +25,7 @@ class TaskTile extends StatelessWidget {
             decoration: isChecked ? TextDecoration.lineThrough : null),
       ),
       trailing: Checkbox(
-        activeColor: Colors.lightBlueAccent,
+        activeColor: Provider.of<MyThemesData>(context).currentColor,
         value: isChecked,
         onChanged: (value) {
           checkboxCallback(value);

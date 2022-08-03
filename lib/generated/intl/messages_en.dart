@@ -25,6 +25,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "Add": MessageLookupByLibrary.simpleMessage("Add"),
         "AddTask": MessageLookupByLibrary.simpleMessage("AddTask"),
         "TabTitle": MessageLookupByLibrary.simpleMessage(
-            "Record every day of life with heart")
+            "Record every day of life with heart"),
+        "tasks": MessageLookupByLibrary.simpleMessage("tasks")
       };
 }
