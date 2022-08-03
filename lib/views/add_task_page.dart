@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:todolist_flutter/models/task_data.dart';
+import 'package:todolist_flutter/models/theme_data.dart';
 import '../generated/l10n.dart';
 
 String? taskTitle;
 
 class AddTaskPage extends StatelessWidget {
-
   static String id = '/AddTasksPage';
 
   @override
@@ -28,7 +28,7 @@ class AddTaskPage extends StatelessWidget {
             Text(
               S.of(context).AddTask,
               textAlign: TextAlign.center,
-              style: TextStyle(color: Colors.lightBlueAccent, fontSize: 30.0),
+              style: TextStyle(color: Provider.of<MyThemesData>(context).currentColor, fontSize: 30.0),
             ),
             TextField(
               onChanged: (value) {
@@ -36,10 +36,10 @@ class AddTaskPage extends StatelessWidget {
               },
               autofocus: true,
               textAlign: TextAlign.center,
-              decoration: const InputDecoration(
+              decoration: InputDecoration(
                 focusedBorder: UnderlineInputBorder(
                   borderSide: BorderSide(
-                    color: Colors.lightBlueAccent,
+                    color: Provider.of<MyThemesData>(context).currentColor,
                     width: 5,
                   ),
                 ),
@@ -49,8 +49,8 @@ class AddTaskPage extends StatelessWidget {
               height: 30.0,
             ),
             MaterialButton(
-              padding: const EdgeInsets.all(30.0),
-              color: Colors.lightBlueAccent,
+              padding: EdgeInsets.all(30.0),
+              color: Provider.of<MyThemesData>(context).currentColor,
               onPressed: () {
                 Provider.of<TaskData>(context, listen: false)
                     .addTask(taskTitle!);

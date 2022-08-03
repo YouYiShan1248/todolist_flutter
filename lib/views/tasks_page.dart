@@ -1,6 +1,8 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:todolist_flutter/models/task_data.dart';
+import 'package:todolist_flutter/models/theme_data.dart';
 import 'package:todolist_flutter/views/add_task_page.dart';
 import '../generated/l10n.dart';
 import '../widgets/tasks_list.dart';
@@ -13,11 +15,8 @@ class TasksPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
-      backgroundColor: Colors.lightBlueAccent,
       floatingActionButton: FloatingActionButton(
-        backgroundColor: Colors.lightBlueAccent,
         onPressed: () {
           showModalBottomSheet(
             context: context,
@@ -35,12 +34,27 @@ class TasksPage extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
-                  '${locationWeather['main']['temp']}℃',
-                  style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 50.0,
-                      fontWeight: FontWeight.w700),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      '${locationWeather['main']['temp']}℃',
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 50.0,
+                          fontWeight: FontWeight.w700),
+                    ),
+                    IconButton(
+                      onPressed: (){
+                        Provider.of<MyThemesData>(context,listen: false).toggleTheme();
+                      },
+                      icon: Icon(
+                        Icons.contrast_sharp,
+                        size: 30,
+                        color: Colors.white,
+                      ),
+                    ),
+                  ],
                 ),
                 Text(
                   S.of(context).TabTitle,
@@ -61,8 +75,8 @@ class TasksPage extends StatelessWidget {
           ),
           Expanded(
             child: Container(
-              decoration: const BoxDecoration(
-                color: Colors.white,
+              decoration:BoxDecoration(
+                color: Colors.white70,
                 borderRadius: BorderRadius.only(
                   topLeft: Radius.circular(30.0),
                   topRight: Radius.circular(30.0),
