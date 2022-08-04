@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 import 'package:todolist_flutter/models/task_data.dart';
 import 'package:todolist_flutter/models/theme_data.dart';
@@ -30,7 +31,7 @@ class TasksPage extends StatelessWidget {
         children: [
           Container(
             padding: EdgeInsets.only(
-                top: 60.0, left: 30.0, right: 30.0, bottom: 30.0),
+                top: 60.0.sp, left: 30.0.sp, right: 30.0.sp, bottom: 30.0.sp),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -41,7 +42,7 @@ class TasksPage extends StatelessWidget {
                       '${locationWeather['main']['temp']}℃',
                       style: TextStyle(
                           color: Colors.white,
-                          fontSize: 50.0,
+                          fontSize: 50.0.sp,
                           fontWeight: FontWeight.w700),
                     ),
                     IconButton(
@@ -50,7 +51,7 @@ class TasksPage extends StatelessWidget {
                       },
                       icon: Icon(
                         Icons.contrast_sharp,
-                        size: 30,
+                        size: 30.sp,
                         color: Colors.white,
                       ),
                     ),
@@ -60,14 +61,14 @@ class TasksPage extends StatelessWidget {
                   S.of(context).TabTitle,
                   style: TextStyle(
                       color: Colors.white,
-                      fontSize: 25.0,
+                      fontSize: 25.0.sp,
                       fontWeight: FontWeight.w300),
                 ),
                 Text(
                   '${Provider.of<TaskData>(context).taskCount} ${S.of(context).tasks}',
                   style: TextStyle(
                     color: Colors.white,
-                    fontSize: 20.0,
+                    fontSize: 20.0.sp,
                   ),
                 ),
               ],
@@ -78,8 +79,8 @@ class TasksPage extends StatelessWidget {
               decoration:BoxDecoration(
                 color: Colors.white70,
                 borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(30.0),
-                  topRight: Radius.circular(30.0),
+                  topLeft: Radius.circular(30.0.sp),
+                  topRight: Radius.circular(30.0.sp),
                 ),
               ),
               child: TasksList(),

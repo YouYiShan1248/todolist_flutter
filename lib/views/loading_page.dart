@@ -24,7 +24,6 @@ class _LoadingPageState extends State<LoadingPage> {
         locationWeather: weatherData,
       );
     }), (route) => false);
-
   }
 
   @override
@@ -54,6 +53,6 @@ class _LoadingPageState extends State<LoadingPage> {
           ),
         ),
       ],
-    ));
+    ),);
   }
 }
