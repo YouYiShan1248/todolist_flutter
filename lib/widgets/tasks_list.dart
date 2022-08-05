@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:todolist_flutter/jsp_util.dart';
 import 'package:todolist_flutter/models/task_data.dart';
+import 'package:todolist_flutter/views/add_task_page.dart';
 import 'package:todolist_flutter/widgets/tasks_tile.dart';
+
 
 class TasksList extends StatelessWidget {
   @override
@@ -19,6 +22,10 @@ class TasksList extends StatelessWidget {
                 taskData.updateTask(task);
               },
               longPressCallback: () {
+                dataList.remove(dataList[index]);
+                JSpUtil.setStringList('tasks', dataList);
+                print(JSpUtil.getStringList('tasks'));
+
                 taskData.deleteTask(task);
               },
             );

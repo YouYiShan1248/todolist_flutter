@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:provider/provider.dart';
+import 'package:todolist_flutter/jsp_util.dart';
 import 'package:todolist_flutter/models/task_data.dart';
 import 'package:todolist_flutter/views/loading_page.dart';
 import 'generated/l10n.dart';
@@ -9,7 +10,11 @@ import 'models/theme_data.dart';
 import 'models/themes.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-void main() {
+void main() async{
+  WidgetsFlutterBinding.ensureInitialized();
+  //初始化
+  await JSpUtil.getInstance();
+
   runApp(const MyApp());
 }
 

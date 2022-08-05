@@ -1,18 +1,23 @@
 import 'package:flutter/material.dart';
+import 'package:todolist_flutter/jsp_util.dart';
 import 'package:todolist_flutter/views/tasks_page.dart';
 import 'package:todolist_flutter/models/weather_model.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+
+
 
 class LoadingPage extends StatefulWidget {
   const LoadingPage({Key? key}) : super(key: key);
 
   static String id = '/LoadingPage';
 
+
   @override
   State<LoadingPage> createState() => _LoadingPageState();
 }
 
 class _LoadingPageState extends State<LoadingPage> {
+
   getLocation() async {
     var weatherData = await WeatherModel().getLocationWeather();
 
@@ -31,6 +36,8 @@ class _LoadingPageState extends State<LoadingPage> {
     // TODO: implement initState
     super.initState();
     getLocation();
+
+
   }
 
   @override

@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
+import 'package:todolist_flutter/jsp_util.dart';
 import 'package:todolist_flutter/models/task_data.dart';
 import 'package:todolist_flutter/models/theme_data.dart';
 import '../generated/l10n.dart';
 
+List<String> dataList = [];
 String? taskTitle;
+
 class AddTaskPage extends StatelessWidget {
   static String id = '/AddTasksPage';
 
@@ -54,6 +57,10 @@ class AddTaskPage extends StatelessWidget {
               padding: EdgeInsets.all(30.0),
               color: Provider.of<MyThemesData>(context).currentColor,
               onPressed: () {
+                dataList.add(taskTitle!);
+                JSpUtil.setStringList('tasks', dataList);
+                print(JSpUtil.getStringList('tasks'));
+
                 Provider.of<TaskData>(context, listen: false)
                     .addTask(taskTitle!);
                 Navigator.pop(context);

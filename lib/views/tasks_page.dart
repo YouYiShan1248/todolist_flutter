@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
+import 'package:todolist_flutter/jsp_util.dart';
 import 'package:todolist_flutter/models/task_data.dart';
 import 'package:todolist_flutter/models/theme_data.dart';
 import 'package:todolist_flutter/views/add_task_page.dart';
@@ -11,7 +12,6 @@ import '../widgets/tasks_list.dart';
 class TasksPage extends StatelessWidget {
   final locationWeather;
   TasksPage({Key? key, this.locationWeather}) : super(key: key);
-
   static String id = '/TasksPage';
 
   @override
@@ -46,8 +46,9 @@ class TasksPage extends StatelessWidget {
                           fontWeight: FontWeight.w700),
                     ),
                     IconButton(
-                      onPressed: (){
-                        Provider.of<MyThemesData>(context,listen: false).toggleTheme();
+                      onPressed: () {
+                        Provider.of<MyThemesData>(context, listen: false)
+                            .toggleTheme();
                       },
                       icon: Icon(
                         Icons.contrast_sharp,
@@ -64,19 +65,38 @@ class TasksPage extends StatelessWidget {
                       fontSize: 25.0.sp,
                       fontWeight: FontWeight.w300),
                 ),
-                Text(
-                  '${Provider.of<TaskData>(context).taskCount} ${S.of(context).tasks}',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 20.0.sp,
-                  ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      '${Provider.of<TaskData>(context).taskCount} ${S.of(context).tasks}',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 20.0.sp,
+                      ),
+                    ),
+                    IconButton(
+                      onPressed: () {
+                        dataList = JSpUtil.getStringList('tasks');
+                        for (String data in JSpUtil.getStringList('tasks')) {
+                          Provider.of<TaskData>(context, listen: false)
+                              .addTask(data);
+                        }
+                      },
+                      icon: Icon(
+                        Icons.update,
+                        color: Colors.white,
+                        size: 30.sp,
+                      ),
+                    ),
+                  ],
                 ),
               ],
             ),
           ),
           Expanded(
             child: Container(
-              decoration:BoxDecoration(
+              decoration: BoxDecoration(
                 color: Colors.white70,
                 borderRadius: BorderRadius.only(
                   topLeft: Radius.circular(30.0.sp),
