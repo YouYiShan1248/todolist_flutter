@@ -25,7 +25,6 @@ class TasksList extends StatelessWidget {
                 dataList.remove(dataList[index]);
                 JSpUtil.setStringList('tasks', dataList);
                 print(JSpUtil.getStringList('tasks'));
-
                 taskData.deleteTask(task);
               },
             );
