@@ -36,6 +36,17 @@ class MyApp extends StatelessWidget {
               theme: Provider.of<MyThemesData>(context).currentTheme,
               darkTheme: Themes().darkTheme,
               home: LoadingPage(),
+
+
+              //在Plugins下载intl插件，使用intl插件可以更方便管理国际化配置
+              //导入国际化支持包
+              //  intl: ^0.17.0
+              //   flutter_localizations:
+              //     sdk: flutter
+              //运行flutter intl:intialize进行初始化，这会为我们添加国际化文件的基本目录
+              //运行flutter intl:Add locale 添加语言种类名称如zh_CH
+              //在对应的arb文件添加对应字段的中英文内容
+              //在我们MaterialApp中添加国际化配置，如下
               localizationsDelegates: const [
                 GlobalMaterialLocalizations.delegate,
                 GlobalWidgetsLocalizations.delegate,
@@ -46,6 +57,10 @@ class MyApp extends StatelessWidget {
                 const Locale('en', ''),
                 ...S.delegate.supportedLocales
               ],
+
+              //在对应文本中通过S.of(context)来调用国际化文本
+
+
               initialRoute: LoadingPage.id,
               // routes: <String, WidgetBuilder>{
               //   LoadingPage.id: (context) => LoadingPage(),
